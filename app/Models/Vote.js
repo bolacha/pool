@@ -2,6 +2,19 @@
 
 const Model = use('Model')
 
+
+/**
+*  @swagger
+*  definitions:
+*    Vote:
+*      type: object
+*      properties:
+*        option:
+*          type: string
+*      required:
+*        - option
+*/
+
 class Vote extends Model {
 
   user() {

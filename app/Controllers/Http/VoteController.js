@@ -11,16 +11,18 @@ class VoteController {
 
   /**
   * @swagger
-  * /vote:
-  *   delete:
+  * /vote/{pool_id}:
+  *   post:
   *     tags:
   *       - Vote
   *     summary: Close a Pool
   *     parameters:
-  *       - pool_id: pool_id
+  *       - in: path
+  *         name: pool_id
   *         description: ID of the Pool
-  *         in: query
   *         required: true
+  *         schema:
+  *           type: integer
   *         type: number
   *       - in: "body"
   *         name: "body"
@@ -28,7 +30,7 @@ class VoteController {
   *         required: true
   *         schema:
   *           $ref: "#/definitions/Vote"
-  *       - name: Authentication
+  *       - name: Authorization
   *         in: header
   *         description: Bearer XXXXXXXX
   *         required: true

@@ -86,16 +86,18 @@ class PoolController {
 
   /**
   * @swagger
-  * /pool:
+  * /pool/{pool_id}:
   *   delete:
   *     tags:
   *       - Pool
   *     summary: Close a Pool
   *     parameters:
-  *       - name: pool_id
+  *       - in: path
+  *         name: pool_id
   *         description: ID of the Pool
-  *         in: query
   *         required: true
+  *         schema:
+  *           type: integer
   *         type: number
   *       - name: Authorization
   *         in: header
