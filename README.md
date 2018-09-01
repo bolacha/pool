@@ -1,28 +1,31 @@
-# Adonis API application
+# Robin Technical Challenge
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
+All the API and Documentation can be found at this Website :
 
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
+https://ulcas-pool.herokuapp.com/docs/
 
-## Setup
+The only APIs that do not need authentication are : 
 
-Use the adonis command to install the blueprint
+* /sessions
+* /user
 
-```bash
-adonis new yardstick --api-only
-```
+There is also an [PAW](https://paw.cloud/) document with the whole API at : 
 
-or manually clone the repo and then run `npm install`.
+https://ulcas-pool.herokuapp.com/poolrobin.paw
 
 
-### Migrations
 
-Run the following command to run startup migrations.
+## TODO
 
-```js
-adonis migration:run
-```
+[x] create a new poll (with choices)
+[x] add choices to an existing poll
+[x] close a poll (disallow further responses)
+[x] respond to a poll
+[x] view all responses on a poll
+
+## Deliverables
+
+* your app's source code, under version control
+* a link to your app, deployed (psst... Heroku has a free option!)
+* a short write-up to a frontend engineer on how they could interact with your backend
+* a short write-up of any assumptions you made (if the requirements were unclear)
