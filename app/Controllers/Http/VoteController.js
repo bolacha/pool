@@ -1,55 +1,49 @@
 'use strict'
 
+const Option = use('App/Models/Option')
+const Pool = use('App/Models/Pool')
+const Vote = use('App/Models/Vote')
+
 /**
  * Resourceful controller for interacting with votes
  */
 class VoteController {
-  /**
-   * Show a list of all votes.
-   * GET votes
-   */
+
   async index ({ request, response, view }) {
   }
 
-  /**
-   * Render a form to be used for creating a new vote.
-   * GET votes/create
-   */
-  async create ({ request, response, view }) {
+  async store ({auth, params, request, response }) {
+
+    const pool = await Pool.findOrFail(params.id)
+    await pool.load('options')
+    await pool.load('votes')
+
+    const data = request.only(['option'])
+
+    if (pool.user_id !== auth.user.id) {
+      return response.status(401).send({ error: 'Not authorized' })
+    }
+
+    if(pool.toJSON().options.map((e) => e.id).indexOf(data.option) === -1) {
+      return response.status(400).send({ error: `Option ${data.option} not available` })
+    }
+
+    if(pool.toJSON().votes.map((e) => e.user_id).indexOf(auth.user.id) != -1) {
+      return response.status(400).send({ error: `You already voted for this option` })
+    }
+
+    return await Vote.create({ pool_id: pool.id, user_id: auth.user.id, option_id: data.option})
   }
 
-  /**
-   * Create/save a new vote.
-   * POST votes
-   */
-  async store ({ request, response }) {
-  }
-
-  /**
-   * Display a single vote.
-   * GET votes/:id
-   */
   async show ({ params, request, response, view }) {
   }
 
-  /**
-   * Render a form to update an existing vote.
-   * GET votes/:id/edit
-   */
   async edit ({ params, request, response, view }) {
   }
 
-  /**
-   * Update vote details.
-   * PUT or PATCH votes/:id
-   */
   async update ({ params, request, response }) {
   }
 
-  /**
-   * Delete a vote with id.
-   * DELETE votes/:id
-   */
   async destroy ({ params, request, response }) {
   }
 }

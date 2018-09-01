@@ -67,7 +67,7 @@ class PoolController {
    * Delete a pool with id.
    * DELETE pools/:id
    */
-  async destroy ({ params, request, response }) {
+  async destroy ({ params, auth, response }) {
 
     const pool = await Pool.findOrFail(params.id)
 

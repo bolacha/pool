@@ -18,3 +18,5 @@ const Route = use('Route')
 Route.post('/users', 'UserController.store')
 Route.post('/sessions', 'SessionController.store')
 Route.resource('pool', 'PoolController').apiOnly().middleware('auth');
+Route.post('option/:id', 'OptionController.store').middleware('auth');
+Route.post('vote/:id', 'VoteController.store').middleware('auth');

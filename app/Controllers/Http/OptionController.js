@@ -1,5 +1,9 @@
 'use strict'
 
+const Option = use('App/Models/Option')
+const Pool = use('App/Models/Pool')
+
+
 /**
  * Resourceful controller for interacting with options
  */
@@ -12,17 +16,22 @@ class OptionController {
   }
 
   /**
-   * Render a form to be used for creating a new option.
-   * GET options/create
-   */
-  async create ({ request, response, view }) {
-  }
-
-  /**
    * Create/save a new option.
    * POST options
    */
-  async store ({ request, response }) {
+  async store ({auth, params, request, response }) {
+
+    const pool = await Pool.findOrFail(params.id)
+
+    if (pool.user_id !== auth.user.id) {
+      return response.status(401).send({ error: 'Not authorized' })
+    }
+
+    const data = request.only(['name'])
+
+    const option = await Option.create({ ...data, pool_id: pool.id})
+
+    return option
   }
 
   /**
