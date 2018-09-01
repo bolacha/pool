@@ -15,7 +15,7 @@ class VoteController {
   *   post:
   *     tags:
   *       - Vote
-  *     summary: Close a Pool
+  *     summary: Vote for a Option in a Pool
   *     parameters:
   *       - in: path
   *         name: pool_id
