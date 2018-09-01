@@ -7,10 +7,20 @@ const Option = use('App/Models/Option')
  * Resourceful controller for interacting with pools
  */
 class PoolController {
+
+
   /**
-   * Show a list of all pools.
-   * GET pools
-   */
+  * @swagger
+  * /pool:
+  *   get:
+  *     tags:
+  *       - Pool
+  *     summary: Get all Pools
+  *     responses:
+  *       200:
+  *         description: Get all Pools
+  */
+
   async index ({ request, response, view }) {
 
     const pools = Pool.all()
@@ -18,10 +28,30 @@ class PoolController {
     return pools
   }
 
+
   /**
-   * Create/save a new pool.
-   * POST pools
-   */
+  * @swagger
+  * /pool:
+  *   post:
+  *     tags:
+  *       - Pool
+  *     summary: Create a Pool
+  *     parameters:
+  *       - name: name
+  *         description: Name of the Pool
+  *         in: body
+  *         required: true
+  *         type: number
+  *       - name: options
+  *         description: Array of Options
+  *         in: body
+  *         required: false
+  *         type: array
+  *     responses:
+  *       200:
+  *         description: Pool Created
+  */
+
   async store ({auth, request, response }) {
 
     const { id } = auth.user
@@ -55,16 +85,22 @@ class PoolController {
   }
 
   /**
-   * Update pool details.
-   * PUT or PATCH pools/:id
-   */
-  async update ({ params, request, response }) {
-  }
-
-  /**
-   * Delete a pool with id.
-   * DELETE pools/:id
-   */
+  * @swagger
+  * /users:
+  *   delete:
+  *     tags:
+  *       - Pool
+  *     summary: Close a Pool
+  *     parameters:
+  *       - pool_id: pool_id
+  *         description: ID of the Pool
+  *         in: query
+  *         required: true
+  *         type: number
+  *     responses:
+  *       200:
+  *         description: Pool Closed
+  */
   async destroy ({ params, auth, response }) {
 
     const pool = await Pool.findOrFail(params.id)
