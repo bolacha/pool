@@ -27,6 +27,10 @@ class OptionController {
       return response.status(401).send({ error: 'Not authorized' })
     }
 
+    if (!pool.open) {
+      return response.status(400).send({ error: 'Pool Closed' })
+    }
+
     const data = request.only(['name'])
 
     const option = await Option.create({ ...data, pool_id: pool.id})

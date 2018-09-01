@@ -8,6 +8,7 @@ class PoolSchema extends Schema {
       table.increments()
       table.timestamps()
       table.string('name')
+      table.boolean('open').defaultTo(true)
       table.integer('user_id').unsigned()
       table.foreign('user_id').references('users.id').onDelete('cascade')
     })

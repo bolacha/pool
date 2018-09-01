@@ -20,6 +20,10 @@ class VoteController {
 
     const data = request.only(['option'])
 
+    if (!pool.open) {
+      return response.status(400).send({ error: 'Pool Closed' })
+    }
+
     if (pool.user_id !== auth.user.id) {
       return response.status(401).send({ error: 'Not authorized' })
     }
@@ -28,14 +32,27 @@ class VoteController {
       return response.status(400).send({ error: `Option ${data.option} not available` })
     }
 
-    if(pool.toJSON().votes.map((e) => e.user_id).indexOf(auth.user.id) != -1) {
+    const similar_votes = pool.toJSON().votes.map((e) => ({ user_id : e.user_id, option_id : e.option_id })).filter(e => e.user_id === auth.user.id && e.option_id === data.option);
+
+    if(similar_votes.length > 0) {
       return response.status(400).send({ error: `You already voted for this option` })
     }
 
     return await Vote.create({ pool_id: pool.id, user_id: auth.user.id, option_id: data.option})
   }
 
-  async show ({ params, request, response, view }) {
+  async show ({ auth, params, request, response, view }) {
+
+    const pool = await Pool.findOrFail(params.id)
+    await pool.load('votes')
+
+    const data = request.only(['option'])
+
+    if (pool.user_id !== auth.user.id) {
+      return response.status(401).send({ error: 'Not authorized' })
+    }
+
+    return pool.toJSON().votes;
   }
 
   async edit ({ params, request, response, view }) {

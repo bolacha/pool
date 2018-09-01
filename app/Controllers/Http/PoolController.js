@@ -1,6 +1,7 @@
 'use strict'
 
 const Pool = use('App/Models/Pool')
+const Option = use('App/Models/Option')
 
 /**
  * Resourceful controller for interacting with pools
@@ -25,11 +26,15 @@ class PoolController {
 
     const { id } = auth.user
 
-    const data = request.only(["name"]);
+    const data = request.only(["name", "options"]);
 
-    const pool = await Pool.create({ ...data , user_id: id })
+    const pool = await Pool.create({ name: data.name , user_id: id })
 
-    await pool.load('user')
+    for(let index in data.options ) {
+      await Option.create({ name : `${ data.options[index] }` , pool_id : pool.id });
+    };
+
+    await pool.load('options')
 
     return pool;
   }
@@ -47,13 +52,6 @@ class PoolController {
     await pool.load('user')
 
     return pool
-  }
-
-  /**
-   * Render a form to update an existing pool.
-   * GET pools/:id/edit
-   */
-  async edit ({ params, request, response, view }) {
   }
 
   /**
@@ -75,7 +73,9 @@ class PoolController {
       return response.status(401).send({ error: 'Not authorized' })
     }
 
-    await pool.delete()
+    pool.open = false;
+
+    await pool.save();
   }
 }
 
