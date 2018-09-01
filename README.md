@@ -46,7 +46,14 @@ And to start the application you will only need to execute
 
 ## Deliverables
 
-* your app's source code, under version control
-* a link to your app, deployed (psst... Heroku has a free option!)
-* a short write-up to a frontend engineer on how they could interact with your backend
-* a short write-up of any assumptions you made (if the requirements were unclear)
+[x] your app's source code, under version control
+[x] a link to your app, deployed (psst... Heroku has a free option!)
+[x] a short write-up to a frontend engineer on how they could interact with your backend
+[x] a short write-up of any assumptions you made (if the requirements were unclear)
+
+## Assumptions
+
+* The USER will need to be logged in for all the API . This will make the API more secure and votes will not be duplicated and Pools will not be close by accident
+* The OPTIONS for the pools are created based on a list of options gave at the creation of the Pool , or after during the Option creating. This will make the Pools for "open" and anyone can use for theyre needs. 
+* For the Frontend Engineer Deliverable , I made an Swagger documentation with the APIs that were created.
+
