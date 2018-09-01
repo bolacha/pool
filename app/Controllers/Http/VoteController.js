@@ -72,7 +72,7 @@ class VoteController {
 
   /**
   * @swagger
-  * /vote/{pool_id}:
+  * /votes/{pool_id}:
   *   get:
   *     tags:
   *       - Vote
