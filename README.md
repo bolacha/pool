@@ -14,6 +14,27 @@ There is also an [PAW](https://paw.cloud/) document with the whole API at :
 https://ulcas-pool.herokuapp.com/poolrobin.paw
 
 
+## Requirements to RUN
+
+NodeJS - 8.11.3
+PostgreSQL 
+
+## Commands to run the application
+
+Before anything , you will need to install all the packages : 
+
+` npm install `
+
+To run the project you will need to set the ENVIROMENT VARIABLES at the .env file in the root folder.
+
+After that you will need to execute : 
+
+` node ace migration:run `
+
+This command will run all the migrations of the database.
+And to start the application you will only need to execute 
+
+` npm start `
 
 ## TODO
 
