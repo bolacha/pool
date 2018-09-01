@@ -3,6 +3,39 @@
 const Model = use('Model')
 const Hash = use('Hash')
 
+/**
+*  @swagger
+*  definitions:
+*    User:
+*      type: object
+*      properties:
+*        username:
+*          type: string
+*        email:
+*          type: string
+*        password:
+*          type: string
+*      required:
+*        - username
+*        - email
+*        - password
+*/
+
+/**
+*  @swagger
+*  definitions:
+*    Authentication:
+*      type: object
+*      properties:
+*        email:
+*          type: string
+*        password:
+*          type: string
+*      required:
+*        - email
+*        - password
+*/
+
 class User extends Model {
   static boot () {
     super.boot()

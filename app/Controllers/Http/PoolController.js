@@ -16,6 +16,8 @@ class PoolController {
   *     tags:
   *       - Pool
   *     summary: Get all Pools
+  *     security:
+  *       - Bearer: []
   *     responses:
   *       200:
   *         description: Get all Pools
@@ -28,8 +30,7 @@ class PoolController {
     return pools
   }
 
-
-  /**
+/**
   * @swagger
   * /pool:
   *   post:
@@ -37,19 +38,17 @@ class PoolController {
   *       - Pool
   *     summary: Create a Pool
   *     parameters:
-  *       - name: name
-  *         description: Name of the Pool
-  *         in: body
+  *       - in: "body"
+  *         name: "body"
+  *         description: "Pool object"
   *         required: true
-  *         type: number
-  *       - name: options
-  *         description: Array of Options
-  *         in: body
-  *         required: false
-  *         type: array
+  *         schema:
+  *           $ref: "#/definitions/Pool"
+  *     security:
+  *       - Bearer: []
   *     responses:
   *       200:
-  *         description: Pool Created
+  *         description: Send hello message
   */
 
   async store ({auth, request, response }) {
@@ -97,6 +96,8 @@ class PoolController {
   *         in: query
   *         required: true
   *         type: number
+  *     security:
+  *       - Bearer: []
   *     responses:
   *       200:
   *         description: Pool Closed

@@ -9,8 +9,31 @@ const Vote = use('App/Models/Vote')
  */
 class VoteController {
 
-  async index ({ request, response, view }) {
-  }
+  /**
+  * @swagger
+  * /vote:
+  *   delete:
+  *     tags:
+  *       - Vote
+  *     summary: Close a Pool
+  *     parameters:
+  *       - pool_id: pool_id
+  *         description: ID of the Pool
+  *         in: query
+  *         required: true
+  *         type: number
+  *       - in: "body"
+  *         name: "body"
+  *         description: "Pool object"
+  *         required: true
+  *         schema:
+  *           $ref: "#/definitions/Vote"
+  *     security:
+  *       - Bearer: []
+  *     responses:
+  *       200:
+  *         description: Vote COnfirmed
+  */
 
   async store ({auth, params, request, response }) {
 
@@ -53,15 +76,6 @@ class VoteController {
     }
 
     return pool.toJSON().votes;
-  }
-
-  async edit ({ params, request, response, view }) {
-  }
-
-  async update ({ params, request, response }) {
-  }
-
-  async destroy ({ params, request, response }) {
   }
 }
 

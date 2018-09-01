@@ -2,6 +2,22 @@
 
 const Model = use('Model')
 
+
+/**
+*  @swagger
+*  definitions:
+*    Pool:
+*      type: object
+*      properties:
+*        name:
+*          type: string
+*        options:
+*          type: array
+*      required:
+*        - name
+*/
+
+
 class Pool extends Model {
 
   user() {

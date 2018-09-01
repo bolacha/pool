@@ -1,28 +1,23 @@
 'use strict'
 
 class SessionController {
-
-  /**
+/**
   * @swagger
   * /sessions:
   *   post:
   *     tags:
   *       - Authentication
-  *     summary: Authenticate the User
+  *     summary: Authenticate an User
   *     parameters:
-  *       - email: email
-  *         description: Email of the user
-  *         in: body
-  *         required: false
-  *         type: string
-  *       - email: password
-  *         description: Password of the user
-  *         in: body
-  *         required: false
-  *         type: string
+  *       - in: "body"
+  *         name: "body"
+  *         description: "User object"
+  *         required: true
+  *         schema:
+  *           $ref: "#/definitions/Authentication"
   *     responses:
   *       200:
-  *         description: Send hello message
+  *         description: Token
   */
 
   async store ({ request, auth }) {

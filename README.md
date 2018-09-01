@@ -38,18 +38,18 @@ And to start the application you will only need to execute
 
 ## TODO
 
-[ x ] create a new poll (with choices)
-[ x ] add choices to an existing poll
-[ x ] close a poll (disallow further responses)
-[ x ] respond to a poll
-[ x ] view all responses on a poll
+  [ x ] create a new poll (with choices)
+  [ x ] add choices to an existing poll
+  [ x ] close a poll (disallow further responses)
+  [ x ] respond to a poll
+  [ x ] view all responses on a poll
 
 ## Deliverables
 
-[ x ] your app's source code, under version control
-[ x ] a link to your app, deployed (psst... Heroku has a free option!)
-[ x ] a short write-up to a frontend engineer on how they could interact with your backend
-[ x ] a short write-up of any assumptions you made (if the requirements were unclear)
+  [ x ] your app's source code, under version control
+  [ x ] a link to your app, deployed (psst... Heroku has a free option!)
+  [ x ] a short write-up to a frontend engineer on how they could interact with your backend
+  [ x ] a short write-up of any assumptions you made (if the requirements were unclear)
 
 ## Assumptions
 
