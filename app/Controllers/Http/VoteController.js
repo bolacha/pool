@@ -28,8 +28,11 @@ class VoteController {
   *         required: true
   *         schema:
   *           $ref: "#/definitions/Vote"
-  *     security:
-  *       - Bearer: []
+  *       - name: Authentication
+  *         in: header
+  *         description: Bearer XXXXXXXX
+  *         required: true
+  *         type: string
   *     responses:
   *       200:
   *         description: Vote COnfirmed

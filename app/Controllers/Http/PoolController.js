@@ -16,8 +16,6 @@ class PoolController {
   *     tags:
   *       - Pool
   *     summary: Get all Pools
-  *     security:
-  *       - Bearer: []
   *     responses:
   *       200:
   *         description: Get all Pools
@@ -44,8 +42,11 @@ class PoolController {
   *         required: true
   *         schema:
   *           $ref: "#/definitions/Pool"
-  *     security:
-  *       - Bearer: []
+  *       - name: Authorization
+  *         in: header
+  *         description: Bearer XXXXXXXX
+  *         required: true
+  *         type: string
   *     responses:
   *       200:
   *         description: Send hello message
@@ -85,19 +86,22 @@ class PoolController {
 
   /**
   * @swagger
-  * /users:
+  * /pool:
   *   delete:
   *     tags:
   *       - Pool
   *     summary: Close a Pool
   *     parameters:
-  *       - pool_id: pool_id
+  *       - name: pool_id
   *         description: ID of the Pool
   *         in: query
   *         required: true
   *         type: number
-  *     security:
-  *       - Bearer: []
+  *       - name: Authorization
+  *         in: header
+  *         description: Bearer XXXXXXXX
+  *         required: true
+  *         type: string
   *     responses:
   *       200:
   *         description: Pool Closed

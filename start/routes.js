@@ -17,7 +17,11 @@ const Route = use('Route')
 
 Route.post('/users', 'UserController.store')
 Route.post('/sessions', 'SessionController.store')
-Route.resource('pool', 'PoolController').apiOnly().middleware('auth');
+Route.get('/pool', 'PoolController.index')
+Route.post('/pool', 'PoolController.store').middleware('auth');
+Route.delete('/pool/:id', 'PoolController.destroy').middleware('auth');
+
+//Route.resource('pool', 'PoolController').apiOnly().middleware('auth');
 Route.post('option/:id', 'OptionController.store').middleware('auth');
 Route.post('vote/:id', 'VoteController.store').middleware('auth');
 Route.get('votes/:id', 'VoteController.show').middleware('auth');
