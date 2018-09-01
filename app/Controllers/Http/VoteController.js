@@ -69,6 +69,32 @@ class VoteController {
     return await Vote.create({ pool_id: pool.id, user_id: auth.user.id, option_id: data.option})
   }
 
+
+  /**
+  * @swagger
+  * /vote/{pool_id}:
+  *   get:
+  *     tags:
+  *       - Vote
+  *     summary: Get Votes for a Pool
+  *     parameters:
+  *       - in: path
+  *         name: pool_id
+  *         description: ID of the Pool
+  *         required: true
+  *         schema:
+  *           type: integer
+  *         type: number
+  *       - name: Authorization
+  *         in: header
+  *         description: Bearer XXXXXXXX
+  *         required: true
+  *         type: string
+  *     responses:
+  *       200:
+  *         description: Pool Closed
+  */
+
   async show ({ auth, params, request, response, view }) {
 
     const pool = await Pool.findOrFail(params.id)

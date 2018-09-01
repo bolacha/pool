@@ -70,9 +70,29 @@ class PoolController {
   }
 
   /**
-   * Display a single pool.
-   * GET pools/:id
-   */
+  * @swagger
+  * /pool/{pool_id}:
+  *   get:
+  *     tags:
+  *       - Pool
+  *     summary: Get information about a Pool
+  *     parameters:
+  *       - in: path
+  *         name: pool_id
+  *         description: ID of the Pool
+  *         required: true
+  *         schema:
+  *           type: integer
+  *         type: number
+  *       - name: Authorization
+  *         in: header
+  *         description: Bearer XXXXXXXX
+  *         required: true
+  *         type: string
+  *     responses:
+  *       200:
+  *         description: List of Pools
+  */
   async show ({ params, request, response, view }) {
 
     const pool = await Pool.findOrFail(params.id)
