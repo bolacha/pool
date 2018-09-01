@@ -7,8 +7,8 @@ class VoteSchema extends Schema {
     this.create('votes', (table) => {
       table.increments()
       table.timestamps()
-      table.integer('customer_id').unsigned()
-      table.foreign('customer_id').references('customers.id').onDelete('cascade')
+      table.integer('user_id').unsigned()
+      table.foreign('user_id').references('users.id').onDelete('cascade')
       table.integer('pool_id').unsigned()
       table.foreign('pool_id').references('pools.id').onDelete('cascade')
       table.integer('option_id').unsigned()

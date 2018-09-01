@@ -8,8 +8,8 @@ class PoolSchema extends Schema {
       table.increments()
       table.timestamps()
       table.string('name')
-      table.integer('customer_id').unsigned()
-      table.foreign('customer_id').references('customers.id').onDelete('cascade')
+      table.integer('user_id').unsigned()
+      table.foreign('user_id').references('users.id').onDelete('cascade')
     })
   }
 
