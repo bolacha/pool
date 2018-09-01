@@ -15,4 +15,4 @@
 
 const Route = use('Route')
 
-Route.post('/customers', 'CustomerController.store')
+Route.post('/users', 'UserController.create')
