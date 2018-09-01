@@ -52,10 +52,6 @@ class VoteController {
       return response.status(400).send({ error: 'Pool Closed' })
     }
 
-    if (pool.user_id !== auth.user.id) {
-      return response.status(401).send({ error: 'Not authorized' })
-    }
-
     if(pool.toJSON().options.map((e) => e.id).indexOf(data.option) === -1) {
       return response.status(400).send({ error: `Option ${data.option} not available` })
     }
@@ -101,10 +97,6 @@ class VoteController {
     await pool.load('votes')
 
     const data = request.only(['option'])
-
-    if (pool.user_id !== auth.user.id) {
-      return response.status(401).send({ error: 'Not authorized' })
-    }
 
     return pool.toJSON().votes;
   }

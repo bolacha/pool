@@ -132,10 +132,6 @@ class PoolController {
 
     const pool = await Pool.findOrFail(params.id)
 
-    if (pool.user_id !== auth.user.id) {
-      return response.status(401).send({ error: 'Not authorized' })
-    }
-
     pool.open = false;
 
     await pool.save();
