@@ -17,7 +17,6 @@ const Model = use('Model')
 *        - name
 */
 
-
 class Pool extends Model {
 
   user() {

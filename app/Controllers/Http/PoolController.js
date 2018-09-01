@@ -50,6 +50,10 @@ class PoolController {
   *     responses:
   *       200:
   *         description: Send hello message
+  *         content:
+  *           application/json:
+  *             schema:
+  *               $ref: "#/definitions/Vote"
   */
 
   async store ({auth, request, response }) {

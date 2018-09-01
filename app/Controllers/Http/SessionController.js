@@ -28,7 +28,7 @@ class SessionController {
   *         description: "User object"
   *         required: true
   *         schema:
-  *           $ref: "#/definitions/Authentication"
+  *           $ref: "#/definitions/AuthenticationReturn"
   *     responses:
   *       200:
   *         description: Token

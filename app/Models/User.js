@@ -36,6 +36,42 @@ const Hash = use('Hash')
 *        - password
 */
 
+/**
+*  @swagger
+*  definitions:
+*    AuthenticationReturn:
+*    type: object
+*    title: The Root Schema
+*    required:
+*    - type
+*    - token
+*    - refreshToken
+*    properties:
+*      type:
+*        $id: '#/properties/type'
+*        type: string
+*        title: The Type Schema
+*        default: ''
+*        examples:
+*        - bearer
+*        pattern: ^(.*)$
+*      token:
+*        $id: '#/properties/token'
+*        type: string
+*        title: The Token Schema
+*        default: ''
+*        examples:
+*        - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTUzNTgzMDM1Nn0.xlz-B3SOoJTbKdjZ8-m-Bs3fpQ_iGsfU0J9oto90QVI
+*        pattern: ^(.*)$
+*      refreshToken:
+*        $id: '#/properties/refreshToken'
+*        type: 'null'
+*        title: The Refreshtoken Schema
+*        default: null
+*        examples:
+*        - null
+*/
+
 class User extends Model {
   static boot () {
     super.boot()

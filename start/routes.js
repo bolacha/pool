@@ -19,6 +19,7 @@ Route.post('/users', 'UserController.store')
 Route.post('/sessions', 'SessionController.store')
 Route.get('/pool', 'PoolController.index')
 Route.post('/pool', 'PoolController.store').middleware('auth');
+Route.get('/pool/:id', 'PoolController.show').middleware('auth');
 Route.delete('/pool/:id', 'PoolController.destroy').middleware('auth');
 
 //Route.resource('pool', 'PoolController').apiOnly().middleware('auth');
