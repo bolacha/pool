@@ -3,6 +3,19 @@
 const Model = use('Model')
 
 class Vote extends Model {
+
+  user() {
+    return this.belongTo('App/Models/User')
+  }
+
+  pool() {
+    return this.belongTo('App/Models/Pool')
+  }
+
+  option() {
+    return this.belongTo('App/Models/Option')
+  }
+
 }
 
 module.exports = Vote

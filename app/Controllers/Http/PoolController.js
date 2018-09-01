@@ -1,5 +1,7 @@
 'use strict'
 
+const Pool = use('App/Models/Pool')
+
 /**
  * Resourceful controller for interacting with pools
  */
@@ -9,20 +11,27 @@ class PoolController {
    * GET pools
    */
   async index ({ request, response, view }) {
-  }
 
-  /**
-   * Render a form to be used for creating a new pool.
-   * GET pools/create
-   */
-  async create ({ request, response, view }) {
+    const pools = Pool.all()
+
+    return pools
   }
 
   /**
    * Create/save a new pool.
    * POST pools
    */
-  async store ({ request, response }) {
+  async store ({auth, request, response }) {
+
+    const { id } = auth.user
+
+    const data = request.only(["name"]);
+
+    const pool = await Pool.create({ ...data , user_id: id })
+
+    await pool.load('user')
+
+    return pool;
   }
 
   /**
@@ -30,6 +39,14 @@ class PoolController {
    * GET pools/:id
    */
   async show ({ params, request, response, view }) {
+
+    const pool = await Pool.findOrFail(params.id)
+
+    await pool.load('votes')
+    await pool.load('options')
+    await pool.load('user')
+
+    return pool
   }
 
   /**
@@ -51,6 +68,14 @@ class PoolController {
    * DELETE pools/:id
    */
   async destroy ({ params, request, response }) {
+
+    const pool = await Pool.findOrFail(params.id)
+
+    if (pool.user_id !== auth.user.id) {
+      return response.status(401).send({ error: 'Not authorized' })
+    }
+
+    await pool.delete()
   }
 }
 
