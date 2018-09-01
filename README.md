@@ -44,6 +44,7 @@ And to start the application you will only need to execute
  * [x] close a poll (disallow further responses)
  * [x] respond to a poll
  * [x] view all responses on a poll
+ * [ ] Unit Tests
 
 ## Deliverables
 
