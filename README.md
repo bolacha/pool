@@ -59,3 +59,9 @@ And to start the application you will only need to execute
 * The OPTIONS for the pools are created based on a list of options gave at the creation of the Pool , or after during the Option creating. This will make the Pools for "open" and anyone can use for theyre needs. 
 * For the Frontend Engineer Deliverable , I made an Swagger documentation with the APIs that were created.
 
+
+### Time : 
+ 
+Started : 10:20AM 
+Endend : 5:22PM
+Lunch : Aprox 1 hour ;D
